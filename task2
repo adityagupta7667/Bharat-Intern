@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #container {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #temperature {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    #result {
+      font-size: 24px;
+      color: #007BFF;
+    }
+
+    #conversion-type {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Temperature Converter</h1>
+    <input type="number" id="temperature" placeholder="Enter temperature">
+    <select id="conversion-type">
+      <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+      <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      const temperatureInput = parseFloat(document.getElementById('temperature').value);
+      const conversionType = document.getElementById('conversion-type').value;
+      let result = 0;
+
+      if (conversionType === 'celsiusToFahrenheit') {
+        result = (temperatureInput * 9/5) + 32;
+      } else {
+        result = (temperatureInput - 32) * 5/9;
+      }
+
+      document.getElementById('result').textContent = `Result: ${result.toFixed(2)}°`;
+    }
+  </script>
+</body>
+</html>
